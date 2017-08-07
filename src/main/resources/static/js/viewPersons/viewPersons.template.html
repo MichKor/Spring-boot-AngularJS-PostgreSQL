@@ -1,0 +1,35 @@
+<div ng-show="$ctrl.persons != null" ng-cloak>
+    <h2>Browse people</h2>
+    <div ng-show="$ctrl.persons.length > 0">
+        <input ng-model="$ctrl.query" />
+        <table class="table">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>NAME</td>
+                <td>SURNAME</td>
+                <td>PESEL</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="person in $ctrl.persons | filter: $ctrl.query">
+                <td>{{ person.id }}</td>
+                <td>{{ person.firstName }}</td>
+                <td>{{ person.lastName }}</td>
+                <td>{{ person.pesel }}</td>
+                <td ng-show="$root.hasAuthority('ROLE_ADMIN')">
+                    <button class="btn btn-success" ng-click="$ctrl.edit($index)">
+                        Edit
+                    </button>
+                    <button class="btn btn-danger" ng-click="$ctrl.delete($index)">
+                        Remove
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="$ctrl.persons.length == 0">
+        No people in the database.
+    </div>
+</div>

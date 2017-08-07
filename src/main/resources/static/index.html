@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test app</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style type="text/css">
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+              display: none !important;
+            }
+    </style>
+</head>
+
+<body ng-app="personApp" ng-cloak>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" ng-controller="MainController">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li ng-show="!isLoggedIn()"><a ui-sref="login">Log in</a></li>
+                <li ng-show="!isLoggedIn()"><a ui-sref="register">Register</a></li>
+                <li ng-show="hasAuthority('ROLE_USER')"><a ui-sref="personList">Browse people</a></li>
+                <li ng-show="hasAuthority('ROLE_USER')"><a ui-sref="movieList">Browse movie</a></li>
+                <li ng-show="hasAuthority('ROLE_ADMIN')"><a ui-sref="addPerson">Add person</a></li>
+                <li ng-show="hasAuthority('ROLE_ADMIN')"><a ui-sref="addMovie">Add movie</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-show="isLoggedIn()"><a href="#" ng-click="logout()">Log out</a></li>
+                <li ng-show="isLoggedIn()"><p class="navbar-text">Account: {{ username }}</p></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div ui-view></div>
+</div>
+
+<script src="js/libraries/angular.js"></script>
+<script src="js/libraries/angular-ui-router.js"></script>
+<script src="js/libraries/angular-resource.js"></script>
+
+<script src="js/app.module.js"></script>
+<script src="js/app.config.js"></script>
+<script src="js/app.controller.js"></script>
+<script src="js/app.run.js"></script>
+
+<script src="js/login/appLogin.module.js"></script>
+<script src="js/login/appLogin.component.js"></script>
+<script src="js/register/appRegister.module.js"></script>
+<script src="js/register/appRegister.component.js"></script>
+
+<script src="js/addPerson/addPerson.module.js"></script>
+<script src="js/addPerson/addPerson.component.js"></script>
+<script src="js/addMovie/addMovie.module.js"></script>
+<script src="js/addMovie/addMovie.component.js"></script>
+<script src="add-movie/person-list.directive.js"></script>
+<script src="js/viewPersons/viewPersons.module.js"></script>
+<script src="js/viewPersons/viewPersons.component.js"></script>
+<script src="js/viewMovies/viewMovies.module.js"></script>
+<script src="js/viewMovies/viewMovies.component.js"></script>
+
+<script src="js/services/servicePerson.module.js"></script>
+<script src="js/services/servicePerson.service.js"></script>
+<script src="js/services/serviceMovie.module.js"></script>
+<script src="js/services/serviceMovie.service.js"></script>
+
+
+</body>
+</html>

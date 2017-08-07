@@ -1,0 +1,1 @@
+angular.module('viewMovies', ['services.movieService']);

@@ -1,0 +1,27 @@
+<h2>Add person</h2>
+<form name="addPersonForm" ng-submit="$ctrl.submit()">
+    <table class="table form-group">
+        <tbody>
+        <tr>
+            <td>Name: </td>
+            <td>
+                <input name="firstName" type="text" class="form-control" ng-model="$ctrl.person.firstName" ng-required="true" />
+            </td>
+            <td>Surname: </td>
+            <td>
+                <input name="lastName" type="text" class="form-control" ng-model="$ctrl.person.lastName" ng-required="true" />
+            </td>
+            <td>PESEL number: </td>
+            <td>
+                <input name="pesel" type="text" class="form-control" ng-model="$ctrl.person.pesel" ng-required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td />
+            <td>
+                <input type="submit" value="Dodaj" ng-disabled="addPersonForm.$invalid" class="btn btn-success" />
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>

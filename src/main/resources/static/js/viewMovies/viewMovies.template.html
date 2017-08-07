@@ -1,0 +1,37 @@
+<div ng-show="$ctrl.movies != null" ng-cloak>
+    <h2>Browse movie</h2>
+    <div ng-show="$ctrl.movies.length > 0">
+        <input ng-model="$ctrl.query" />
+        <table class="table">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Title</td>
+                <td>Author</td>
+                <td>Year od production</td>
+                <td>Person borrowing a movie</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="movie in $ctrl.movies | filter: $ctrl.query">
+                <td>{{ movie.id }}</td>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.author }}</td>
+                <td>{{ movie.production_year }}</td>
+                <td>{{ movie.person.firstName }} {{ movie.person.lastName }}</td>
+                <td ng-show="$root.hasAuthority('ROLE_ADMIN')">
+                    <button class="btn btn-success"  ng-click="$ctrl.edit($index)">
+                        Edit
+                    </button>
+                    <button class="btn btn-danger"  ng-click="$ctrl.delete($index)">
+                        Remove
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="$ctrl.movies.length == 0">
+        No movies in the database.
+    </div>
+</div>

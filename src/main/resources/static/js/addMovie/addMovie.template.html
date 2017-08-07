@@ -1,0 +1,34 @@
+<div ng-show="$ctrl.persons != null" ng-cloak>
+    <h2>Add movie</h2>
+    <form name="addMovieForm" ng-submit="$ctrl.submit()">
+        <table class="table form-group">
+            <tbody>
+            <tr>
+                <td>Title:</td>
+                <td>
+                    <input name="movie_title" type="text" class="form-control" ng-model="$ctrl.movie.title" ng-required="true" />
+                </td>
+                <td>Author:</td>
+                <td>
+                    <input name="movie_author" type="text" class="form-control" ng-model="$ctrl.movie.author" ng-required="true" />
+                </td>
+                <td>Year of production:</td>
+                <td>
+                    <input name="movie_production_year" type="text" class="form-control" ng-model="$ctrl.movie.production_year" ng-required="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>Person borrowing a movie:</td>
+                <td>
+                    <person-list list="$ctrl.persons" model="$ctrl.movie.person" class="form-control"></person-list>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Add" ng-disabled="addMovieForm.$invalid" class="btn btn-success" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
